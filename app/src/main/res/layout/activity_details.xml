@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView"
+    <ImageView
+        android:id="@+id/vimag"
         android:layout_width="134dp"
         android:layout_height="158dp"
         android:layout_marginStart="32dp"
@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/a" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvname"
         android:layout_width="140dp"
         android:layout_height="39dp"
         android:layout_marginStart="64dp"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvphone"
         android:layout_width="138dp"
         android:layout_height="39dp"
         android:layout_marginStart="64dp"

@@ -1,6 +1,7 @@
 package com.bibek.recyclerview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class contactsAdapter extends RecyclerView.Adapter<contactsAdapter.ViewHolder>{
     MainActivity mcontext;
@@ -30,11 +33,21 @@ public class contactsAdapter extends RecyclerView.Adapter<contactsAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        contacts contacts =contactsList.get(position);
-        holder.imageprofile.setImageResource(contacts.getImageId());
-        holder.tvName.setText(contacts.getName());
-        holder.tvPhone.setText(contacts.getPhone());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
+        final contacts con =contactsList.get(i);
+        holder.imageprofile.setImageResource(con.getImageId());
+        holder.tvName.setText(con.getName());
+        holder.tvPhone.setText(con.getPhone());
+        holder.imageprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(mcontext,details.class);
+                intent.putExtra("image",con.getImageId());
+                intent.putExtra("name",con.getName());
+                intent.putExtra("phone",con.getPhone());
+                mcontext.startActivity(intent);
+            }
+        });
 
     }
 
@@ -44,7 +57,7 @@ public class contactsAdapter extends RecyclerView.Adapter<contactsAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView imageprofile;
+         CircleImageView imageprofile;
         TextView tvName,tvPhone;
 
         public ViewHolder(@NonNull View itemView) {
